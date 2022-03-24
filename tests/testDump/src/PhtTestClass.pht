@@ -1,0 +1,11 @@
+<?php
+
+namespace Thettler\Pht\Tests\testDump\src;
+
+class PhtTestClass
+{
+    fn testMethod<T>(): T{
+        $var: T = 'string';
+        return $var;
+    }
+}
