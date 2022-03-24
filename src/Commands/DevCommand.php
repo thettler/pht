@@ -26,7 +26,7 @@ class DevCommand extends Command
     {
         parent::__construct();
         $this->loop = Loop::get();
-        $this->adapter = new LocalFilesystemAdapter(__DIR__ .'/../../..');
+        $this->adapter = new LocalFilesystemAdapter(__DIR__ .'/../../../../..');
         $this->filesystem = new Filesystem($this->adapter);
 
         $this->changed = [];
@@ -50,16 +50,23 @@ class DevCommand extends Command
     {
         $this->src = trim($input->getOption('src'), '/');
         $this->target = trim($input->getOption('target'), '/');
-        $files = $this->getPhtFiles($this->src);
 
-        /** @var FileAttributes $file */
-        foreach ($files as $file) {
-            $this->compilePhtFile($file);
+        $output->write('Started Watching for .pht files:');
 
-            $this->changed[$file->path()] = $file->lastModified();
+        $this->loop->addPeriodicTimer(.5, function () use ($output) {
+            $files = $this->getPhtFiles($this->src);
 
-            $output->write('Updated: '.$file->path().PHP_EOL);
-        }
+            /** @var FileAttributes $file */
+            foreach ($files as $file) {
+                $this->compilePhtFile($file);
+
+                $this->changed[$file->path()] = $file->lastModified();
+
+                $output->write('Updated: '.$file->path().PHP_EOL);
+            }
+        });
+
+        $this->loop->run();
 
         return 0;
     }
