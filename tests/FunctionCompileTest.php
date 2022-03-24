@@ -11,7 +11,7 @@ EOF);
 });
 
 it('can compile function with parameters to php', function () {
-     expect((new \Thettler\Pht\PhtCompiler())
+    expect((new \Thettler\Pht\PhtCompiler())
         ->compile('fn test(string $foo){}'))
         ->toEqual(<<<'EOF'
 /**
@@ -143,4 +143,3 @@ $foo = "bar";
 }
 EOF);
 });
-

@@ -48,13 +48,12 @@ class DevCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->src = trim($input->getOption('src'),'/');
+        $this->src = trim($input->getOption('src'), '/');
         $this->target = trim($input->getOption('target'), '/');
         $files = $this->getPhtFiles($this->src);
 
         /** @var FileAttributes $file */
         foreach ($files as $file) {
-
             $this->compilePhtFile($file);
 
             $this->changed[$file->path()] = $file->lastModified();
