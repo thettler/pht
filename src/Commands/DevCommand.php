@@ -42,7 +42,7 @@ class DevCommand extends Command
         $this
             ->setName('dev')
             ->setDescription('Watch and compile pht to php')
-            ->addOption('src', null, InputOption::VALUE_OPTIONAL, '', 'src')
+            ->addOption('src', null, InputOption::VALUE_OPTIONAL, '', 'app')
             ->addOption('target', null, InputOption::VALUE_OPTIONAL, '', '.pht');
     }
 
