@@ -26,7 +26,7 @@ class DevCommand extends Command
     {
         parent::__construct();
         $this->loop = Loop::get();
-        $this->adapter = new LocalFilesystemAdapter(__DIR__ .'/../..');
+        $this->adapter = new LocalFilesystemAdapter(__DIR__ .'/../../..');
         $this->filesystem = new Filesystem($this->adapter);
 
         $this->changed = [];
