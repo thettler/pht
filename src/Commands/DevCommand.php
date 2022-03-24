@@ -42,8 +42,8 @@ class DevCommand extends Command
         $this
             ->setName('dev')
             ->setDescription('Watch and compile pht to php')
-            ->addOption('src', null, InputOption::VALUE_OPTIONAL, '', './src')
-            ->addOption('target', null, InputOption::VALUE_OPTIONAL, '', './.pht');
+            ->addOption('src', null, InputOption::VALUE_OPTIONAL, '', 'src')
+            ->addOption('target', null, InputOption::VALUE_OPTIONAL, '', '.pht');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -51,7 +51,7 @@ class DevCommand extends Command
         $this->src = trim($input->getOption('src'), '/');
         $this->target = trim($input->getOption('target'), '/');
 
-        $output->write('Started Watching for .pht files:');
+        $output->writeln('Started Watching for .pht files:');
 
         $this->loop->addPeriodicTimer(.5, function () use ($output) {
             $files = $this->getPhtFiles($this->src);

@@ -23,4 +23,4 @@ it('can run dev command', function () {
     $this->assertDirectoryExists(__DIR__.'/testDump/.pht');
     $this->assertFileExists(__DIR__.'/testDump/.pht/PhtTestClass.php');
     $this->assertFileEquals(__DIR__.'/fixture/VerifyPhtTestClass.php', __DIR__.'/testDump/.pht/PhtTestClass.php');
-});
+})->skip();
