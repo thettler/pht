@@ -1,6 +1,6 @@
 <?php
 
-it('can run dev command', function (){
+it('can run dev command', function () {
     $src = '/tests/testDump/src';
     $target = __DIR__.'/testDump/.pht';
 

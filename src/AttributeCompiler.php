@@ -12,8 +12,12 @@ class AttributeCompiler implements Compiler
 
     public function compile(string $phtCode): string
     {
-        preg_match_all('/(?:(?<visibility>pub|private)\s+)?(?:(?<access>static|readonly)\s+)?(?<name>\$\w+)\s*:\s*(?<type>[^=|^\s]+)*\s*=?\s*(?<value>[^;|^\s]+)*\s*;/m',
-            $phtCode, $matches, PREG_SET_ORDER);
+        preg_match_all(
+            '/(?:(?<visibility>pub|private)\s+)?(?:(?<access>static|readonly)\s+)?(?<name>\$\w+)\s*:\s*(?<type>[^=|^\s]+)*\s*=?\s*(?<value>[^;|^\s]+)*\s*;/m',
+            $phtCode,
+            $matches,
+            PREG_SET_ORDER
+        );
 
         foreach ($matches as $match) {
             $phtCode = str_replace($match[0], $this->render($match), $phtCode);

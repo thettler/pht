@@ -2,8 +2,6 @@
 
 namespace Thettler\Pht;
 
-use Thettler\Pht\Contracts\Compiler;
-
 class MethodCompiler extends FunctionCompiler
 {
     public const REGEX = '/(?<complete>(?:(?<visibility>pub|private)\s+)?(?:(?<static>static)\s+)?fn\s+(?<name>\w+)\s*<?(?<generic>.+?)?>?\((?<params>\w+.*)?\)\s*:?(?(?<=:)(?:\s*(?<return>.+?(?=[{|\s]))))\s*{\s*(?<content>[\s\S]*?)\s*})/m';
