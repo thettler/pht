@@ -1,35 +1,35 @@
 
 [<img src="https://github-ads.s3.eu-central-1.amazonaws.com/support-ukraine.svg?t=1" />](https://supportukrainenow.org)
 
-# This is my package pht
+# PHT: Something like Typescript but for PHP  
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/thettler/pht.svg?style=flat-square)](https://packagist.org/packages/thettler/pht)
 [![Tests](https://github.com/thettler/pht/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/thettler/pht/actions/workflows/run-tests.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/thettler/pht.svg?style=flat-square)](https://packagist.org/packages/thettler/pht)
 
-This is where your description should go. Try and limit it to a paragraph or two. Consider adding a small example.
+> :exclamation: :exclamation:  This is only a prototype and a Proof of concept. It is not meant to be used seriously and has a lot of bugs. You can read about it here [PHT: Building Typescript for PHP](https://bitbench.dev/blog/pht-building-typescript-for-php). But feel free to contribute and spin the idea even further :exclamation: :exclamation:
 
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/pht.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/pht)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+This is just a little proof of concept for everybody to play around. For a better explanation read the article on
+[bitbench.dev - PHT: Building Typescript for PHP](https://bitbench.dev/blog/pht-building-typescript-for-php)
 
 ## Installation
-
 You can install the package via composer:
-
 ```bash
 composer require thettler/pht
 ```
 
 ## Usage
+To start the watcher 
+```bash
+./vendor/bin/pht dev
+```
+by default, it will look inside the 'app' directory for any .pht files and compiles them into the '.pht' directory.
 
+### Autoload
+To enable auto-loading find your `autoload.php` require and call right after the `Thettler\Pht\PHT::autoload($loader)`.
 ```php
-$skeleton = new Thettler\Pht();
-echo $skeleton->echoPhrase('Hello, Thettler!');
+$loader = require __DIR__.'/../vendor/autoload.php';
+Thettler\Pht\PHT::autoload($loader);
 ```
 
 ## Testing

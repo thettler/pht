@@ -11,8 +11,6 @@ class PhtCompiler implements Compiler
         $phtCode = trim($phtCode);
         $phtCode = (new ClassCompiler())->compile($phtCode);
         $phtCode = (new FunctionCompiler())->compile($phtCode);
-        $phtCode = (new VariableCompiler())->compile($phtCode);
-
-        return $phtCode;
+        return (new VariableCompiler())->compile($phtCode);
     }
 }

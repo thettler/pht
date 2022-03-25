@@ -71,7 +71,7 @@ class DevCommand extends Command
         return 0;
     }
 
-    public function getPhtFiles($src)
+    public function getPhtFiles($src): array
     {
         return $this->filesystem->listContents($src, FilesystemReader::LIST_DEEP)
             ->filter(fn (\League\Flysystem\StorageAttributes $attributes) => $attributes->isFile())
